@@ -2748,6 +2748,18 @@ table td[class*="col-"], table th[class*="col-"] {
 	min-height: 0.01%
 }
 
+.table-scroll{
+	max-height: 600px;
+	overflow-y: auto;
+}
+
+.table-scroll thead th{
+	position: sticky;
+	top: 0;
+	background: white;
+	z-index: 2;
+}
+
 @media screen and (max-width:767px) {
 	.table-responsive {
 		width: 100%;
@@ -2958,7 +2970,7 @@ input[type="search"] {
 	.checkbox-inline input[type="checkbox"] {
 	position: absolute;
 	margin-left: -20px;
-	margin-top: 4px \9
+	margin-top: 4px \9
 }
 
 .radio+.radio, .checkbox+.checkbox {

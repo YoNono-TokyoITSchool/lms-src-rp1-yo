@@ -2423,6 +2423,18 @@ table th[class*="col-"] {
   min-height: .01%;
   overflow-x: auto;
 }
+/* 表をスクロールさせる処理 */
+.table-scroll{
+	max-height: 600px;
+	overflow-y: auto;
+}
+
+.table-scroll thead th{
+	position: sticky;
+	top: 0;
+	background: white;
+	z-index: 2;
+}
 @media screen and (max-width: 767px) {
   .table-responsive {
     width: 100%;
