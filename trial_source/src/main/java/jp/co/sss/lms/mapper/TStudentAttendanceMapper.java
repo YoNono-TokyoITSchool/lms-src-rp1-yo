@@ -64,5 +64,8 @@ public interface TStudentAttendanceMapper {
 	 * @return 更新結果
 	 */
 	Boolean update(TStudentAttendance tStudentAttendance);
+	
+	
+	Integer countPastIncomplete(@Param("userId")Integer userId);
 
 }
