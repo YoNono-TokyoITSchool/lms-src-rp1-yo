@@ -1,6 +1,7 @@
 package jp.co.sss.lms.service;
 
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -332,6 +333,17 @@ public class StudentAttendanceService {
 		}
 		// 完了メッセージ
 		return messageUtil.getMessage(Constants.PROP_KEY_ATTENDANCE_UPDATE_NOTICE);
+	}
+	
+	/**
+	 * 出退勤未入力チェック
+	 * 
+	 * @param userId ユーザID
+	 * @return 未入力が１件以上あればtrue、なければfalse
+	 */
+	public boolean hasNotEnteredCheck(Integer userId){
+		Integer notEntered = tStudentAttendanceMapper.notEnteredCheck(userId, 0, LocalDate.now());
+		return notEntered != null && notEntered > 0;
 	}
 
 }

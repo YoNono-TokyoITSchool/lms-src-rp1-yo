@@ -87,6 +87,10 @@
 			return hours + ':' + minutes;
 		}
 	</script>
+	
+	<script th:if="${hasNotEntered}">
+		alert("過去日の勤怠に未入力があります。");
+	</script>
 
 </body>
 </html>

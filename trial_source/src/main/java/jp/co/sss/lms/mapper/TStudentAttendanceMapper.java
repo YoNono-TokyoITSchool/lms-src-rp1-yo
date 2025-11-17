@@ -1,5 +1,6 @@
 package jp.co.sss.lms.mapper;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -65,7 +66,19 @@ public interface TStudentAttendanceMapper {
 	 */
 	Boolean update(TStudentAttendance tStudentAttendance);
 	
+	/**
+	 * 勤怠情報（受講生入力）未入力チェック
+	 * 
+	 * @param userId
+	 * @param deleteFlg
+	 * @param trainingDate
+	 * @return
+	 */
+	Integer notEnteredCheck
+	(
+		@Param("lmsUserId") Integer lmsUserId,
+		@Param("deleteFlg") Integer deleteFlg,
+		@Param("trainingDate") LocalDate trainingDate
+	);
 	
-	Integer countPastIncomplete(@Param("userId")Integer userId);
-
 }
