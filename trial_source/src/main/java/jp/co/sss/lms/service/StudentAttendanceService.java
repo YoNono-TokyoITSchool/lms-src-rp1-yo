@@ -1,7 +1,7 @@
 package jp.co.sss.lms.service;
 
 import java.text.ParseException;
-import java.time.LocalDate;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -341,8 +341,18 @@ public class StudentAttendanceService {
 	 * @param userId ユーザID
 	 * @return 未入力が１件以上あればtrue、なければfalse
 	 */
-	public boolean hasNotEnteredCheck(Integer userId){
-		Integer notEntered = tStudentAttendanceMapper.notEnteredCheck(userId, 0, LocalDate.now());
+	public boolean hasNotEnteredCheck(Integer lmsUserId){
+		//今日の日付を取得
+		Date today = new Date();
+		
+		//表示形式をyyyy/MM/ddに変換
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		String todayStr = sdf.format(today);
+		
+		Integer notEntered = tStudentAttendanceMapper.notEnteredCheck(lmsUserId, 0, todayStr);
+		
+		System.out.println("DEBUG >> notEntered = " + notEntered + ", todayStr = " + todayStr);
+		
 		return notEntered != null && notEntered > 0;
 	}
 

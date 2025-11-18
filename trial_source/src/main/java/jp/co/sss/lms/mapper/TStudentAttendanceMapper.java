@@ -1,6 +1,5 @@
 package jp.co.sss.lms.mapper;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -78,7 +77,7 @@ public interface TStudentAttendanceMapper {
 	(
 		@Param("lmsUserId") Integer lmsUserId,
 		@Param("deleteFlg") Integer deleteFlg,
-		@Param("trainingDate") LocalDate trainingDate
+		@Param("trainingDate") String trainingDate
 	);
 	
 }
