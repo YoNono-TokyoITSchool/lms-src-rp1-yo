@@ -336,9 +336,10 @@ public class StudentAttendanceService {
 	}
 	
 	/**
-	 * 葉 Task.25
+	 * 
 	 * 出退勤未入力チェック
 	 * 
+	 * @author 葉 Task.25
 	 * @param userId ユーザID
 	 * @return 未入力が１件以上あればtrue、なければfalse
 	 */

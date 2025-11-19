@@ -66,9 +66,10 @@ public interface TStudentAttendanceMapper {
 	Boolean update(TStudentAttendance tStudentAttendance);
 	
 	/**
-	 * 葉 Task.25
+	 * 
 	 * 勤怠情報（受講生入力）未入力チェック
 	 * 
+	 * @author 葉 Task.25
 	 * @param userId
 	 * @param deleteFlg
 	 * @param trainingDate
