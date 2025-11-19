@@ -336,6 +336,7 @@ public class StudentAttendanceService {
 	}
 	
 	/**
+	 * 葉 Task.25
 	 * 出退勤未入力チェック
 	 * 
 	 * @param userId ユーザID
@@ -350,8 +351,6 @@ public class StudentAttendanceService {
 		String todayStr = sdf.format(today);
 		
 		Integer notEntered = tStudentAttendanceMapper.notEnteredCheck(lmsUserId, 0, todayStr);
-		
-		System.out.println("DEBUG >> notEntered = " + notEntered + ", todayStr = " + todayStr);
 		
 		return notEntered != null && notEntered > 0;
 	}

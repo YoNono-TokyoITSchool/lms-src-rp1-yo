@@ -47,6 +47,7 @@ public class AttendanceController {
 				.getAttendanceManagement(loginUserDto.getCourseId(), loginUserDto.getLmsUserId());
 		model.addAttribute("attendanceManagementDtoList", attendanceManagementDtoList);
 		
+		//葉 Task.25
 		boolean hasNotEntered = studentAttendanceService.hasNotEnteredCheck(loginUserDto.getLmsUserId());
 		model.addAttribute("hasNotEntered",hasNotEntered);
 
