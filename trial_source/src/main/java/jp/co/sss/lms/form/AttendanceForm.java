@@ -32,4 +32,13 @@ public class AttendanceForm {
 	/** 日次の勤怠フォームリスト */
 	private List<DailyAttendanceForm> attendanceList;
 
+	/** Task.26 葉 */
+	/** 出勤時間（時） */
+	private Integer trainingStartTimeHh;
+	/** 出勤時間（分） */
+	private Integer trainingStartTimeMi;
+	/** 退勤時間（時） */
+	private Integer trainingEndTimeHh;
+	/** 退勤時間（分） */
+	private Integer trainingEndTimeMi;
 }
