@@ -146,5 +146,35 @@ public class AttendanceUtil {
 		}
 		return false;
 	}
+	
+	/**
+	 * 
+	 * 時間のプルダウンマップ
+	 * 
+	 * @author 葉 Task.26
+	 * @return
+	 */
+	public LinkedHashMap<Integer,String> getHourMap(){
+		LinkedHashMap<Integer,String> map = new LinkedHashMap<>();
+		for(int h = 0; h <= 23; h++) {
+			map.put(h,String.format("%02d",h));
+		}
+		return map;
+	}
+	
+	/**
+	 * 
+	 * 分のプルダウンマップ
+	 * 
+	 * @author 葉 Task.26
+	 * @return
+	 */
+	public LinkedHashMap<Integer,String> getMinuteMap(){
+		LinkedHashMap<Integer,String> map = new LinkedHashMap<>();
+		for(int m = 0; m <= 59; m++) {
+			map.put(m,String.format("%02d",m));
+		}
+		return map;
+	}
 
 }

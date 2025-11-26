@@ -296,8 +296,18 @@ public class StudentAttendanceService {
 			tStudentAttendance.setAccountId(loginUserDto.getAccountId());
 			// 出勤時刻整形
 			TrainingTime trainingStartTime = null;
-			trainingStartTime = new TrainingTime(dailyAttendanceForm.getTrainingStartTime());
-			tStudentAttendance.setTrainingStartTime(trainingStartTime.getFormattedString());
+			//trainingStartTime = new TrainingTime(dailyAttendanceForm.getTrainingStartTime());
+			//tStudentAttendance.setTrainingStartTime(trainingStartTime.getFormattedString());
+			String startTimeStr = null;
+			if(dailyAttendanceForm.getTrainingStartTimeHour() != null
+					&& dailyAttendanceForm.getTrainingStartTimeMinute() != null) {
+				startTimeStr = String.format("%02d:%02d",dailyAttendanceForm.getTrainingStartTimeHour(),dailyAttendanceForm.getTrainingStartTimeMinute());
+				trainingStartTime = new TrainingTime(startTimeStr);
+				tStudentAttendance.setTrainingStartTime(trainingStartTime.getFormattedString());
+			}
+			else {
+				tStudentAttendance.setTrainingStartTime(null);
+			}
 			// 退勤時刻整形
 			TrainingTime trainingEndTime = null;
 			trainingEndTime = new TrainingTime(dailyAttendanceForm.getTrainingEndTime());
