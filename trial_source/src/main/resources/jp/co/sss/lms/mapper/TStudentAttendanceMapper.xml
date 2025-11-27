@@ -94,7 +94,7 @@
 		WHERE student_attendance_id = #{studentAttendanceId}
 	</update>
 
-	<select id="notEnteredCheck"
+	<select id="notEnterCount"
 		resultType="java.lang.Integer">
 		SELECT
 		COUNT(*)
@@ -103,12 +103,11 @@
 		WHERE
 		lms_user_id = #{lmsUserId}
 		AND delete_flg = #{deleteFlg}
-		AND to_char(training_date, 'yyyy/MM') = to_char(CURRENT_DATE, 'yyyy/MM')
 		AND training_date &lt; TO_DATE(#{trainingDate},'yyyy/MM/dd')
 		AND 
 		(
-			training_start_time IS NULL OR training_start_time = ''
-			OR training_end_time IS NULL OR training_end_time = ''
+			training_start_time IS NULL OR training_end_time IS NULL
+			OR training_start_time = '' OR training_end_time = ''
 		)
 	</select>
 

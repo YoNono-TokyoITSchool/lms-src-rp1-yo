@@ -296,8 +296,7 @@ public class StudentAttendanceService {
 			tStudentAttendance.setAccountId(loginUserDto.getAccountId());
 			// 出勤時刻整形
 			TrainingTime trainingStartTime = null;
-			//trainingStartTime = new TrainingTime(dailyAttendanceForm.getTrainingStartTime());
-			//tStudentAttendance.setTrainingStartTime(trainingStartTime.getFormattedString());
+			//葉 Task.26
 			String startTimeStr = null;
 			if(dailyAttendanceForm.getTrainingStartTimeHour() != null
 					&& dailyAttendanceForm.getTrainingStartTimeMinute() != null) {
@@ -310,8 +309,17 @@ public class StudentAttendanceService {
 			}
 			// 退勤時刻整形
 			TrainingTime trainingEndTime = null;
-			trainingEndTime = new TrainingTime(dailyAttendanceForm.getTrainingEndTime());
-			tStudentAttendance.setTrainingEndTime(trainingEndTime.getFormattedString());
+			//葉 Task.26
+			String endTimeStr = null;
+			if(dailyAttendanceForm.getTrainingEndTimeHour() != null
+					&& dailyAttendanceForm.getTrainingEndTimeMinute() != null) {
+				endTimeStr = String.format("%02d:%02d",dailyAttendanceForm.getTrainingEndTimeHour(),dailyAttendanceForm.getTrainingEndTimeMinute());
+				trainingEndTime = new TrainingTime(endTimeStr);
+				tStudentAttendance.setTrainingEndTime(trainingEndTime.getFormattedString());
+			}
+			else {
+				tStudentAttendance.setTrainingEndTime(null);
+			}
 			// 中抜け時間
 			tStudentAttendance.setBlankTime(dailyAttendanceForm.getBlankTime());
 			// 遅刻早退ステータス
@@ -353,7 +361,7 @@ public class StudentAttendanceService {
 	 * @param userId ユーザID
 	 * @return 未入力が１件以上あればtrue、なければfalse
 	 */
-	public boolean hasNotEnteredCheck(Integer lmsUserId){
+	public boolean hasNotEnterCount(Integer lmsUserId){
 		//今日の日付を取得
 		Date today = new Date();
 		
@@ -361,7 +369,7 @@ public class StudentAttendanceService {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		String todayStr = sdf.format(today);
 		
-		Integer notEntered = tStudentAttendanceMapper.notEnteredCheck(lmsUserId, 0, todayStr);
+		Integer notEntered = tStudentAttendanceMapper.notEnterCount(lmsUserId,(int)Constants.DB_FLG_FALSE, todayStr);
 		
 		return notEntered != null && notEntered > 0;
 	}
